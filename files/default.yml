@@ -1,0 +1,11 @@
+project_name: {{ pillar['project_client']|title }} {{ pillar['project_name']|title|replace('_', ' ') }}
+project_root: {{ pillar['root_dir'] }}/{{ pillar['project_name'] }}
+pre:
+  - git up
+  - vim +BundleClean +BundleInstall +qall
+tabs:
+  - Vim: workon {{ pillar['project_name'] }} && vim
+  - Shell: workon {{ pillar['project_name'] }}
+  - Tests: workon {{ pillar['project_name'] }} && django-admin.py test
+  - Git: workon {{ pillar['project_name'] }}
+  - Server: workon {{ pillar['project_name'] }} && django-admin.py runserver 0.0.0.0:9000

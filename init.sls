@@ -1,3 +1,7 @@
+#
+# Tmux Salt Module
+#
+
 include:
-  - tmux
-  - zoom
+  - chris_tmux.install
+  - chris_tmux.config

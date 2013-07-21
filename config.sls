@@ -30,3 +30,10 @@ chris_tmux_zoom:
     - source: salt://chris_tmux/files/tmux-zoom.sh
     - require:
       - file.directory: /home/vagrant/.tmux
+
+chris_tmux_tmuxinator_link:
+  file:
+    - symlink
+    - name: /home/vagrant/.tmuxinator
+    - target: /home/vagrant/facio/.tmuxinator
+    - makedirs: True

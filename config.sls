@@ -15,7 +15,7 @@ chris_tmux_conf:
 chris_tmux_directory:
   file:
     - directory
-    - name: /home/vagrant/.tmux:
+    - name: /home/vagrant/.tmux
     - user: vagrant
     - group: vagrant
     - mode: 755

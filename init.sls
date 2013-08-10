@@ -3,5 +3,5 @@
 #
 
 include:
-  - chris_tmux.install
-  - chris_tmux.config
+  - local_tmux.install
+  - local_tmux.config

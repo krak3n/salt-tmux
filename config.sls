@@ -2,17 +2,17 @@
 # Tmux Config
 #
 
-chris_tmux_conf:
+local_tmux_conf:
   file:
     - managed
     - name: /home/vagrant/.tmux.conf
     - user: vagrant
     - group: vagrant
     - mode: 755
-    - source: salt://chris_tmux/files/.tmux.conf
+    - source: salt://local_tmux/files/.tmux.conf
 
 # Tmux Zoom
-chris_tmux_directory:
+local_tmux_directory:
   file:
     - directory
     - name: /home/vagrant/.tmux
@@ -20,18 +20,18 @@ chris_tmux_directory:
     - group: vagrant
     - mode: 755
 
-chris_tmux_zoom:
+local_tmux_zoom:
   file:
     - managed
     - name: /home/vagrant/.tmux/tmux-zoom.sh
     - user: vagrant
     - group: vagrant
     - mode: 755
-    - source: salt://chris_tmux/files/tmux-zoom.sh
+    - source: salt://local_tmux/files/tmux-zoom.sh
     - require:
       - file.directory: /home/vagrant/.tmux
 
-chris_tmux_tmuxinator_link:
+local_tmux_tmuxinator_link:
   file:
     - symlink
     - name: /home/vagrant/.tmuxinator

@@ -6,9 +6,9 @@
 
 {% set dependencies = [
   "python-software-properties",
-  "ruby1.9.1",
-  "ruby1.9.1-dev",
-  "rubygems1.9.1"] %}
+  "ruby1.9.3",
+  "ruby1.9.3-dev",
+  "rubygems1.9.3"] %}
 
 {% for pkg in dependencies %}
 .{{ pkg }}:
@@ -32,4 +32,4 @@
   gem:
     - installed
     - require:
-      - pkg: .rubygems1.9.1
+      - pkg: .rubygems1.9.3

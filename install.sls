@@ -4,17 +4,12 @@
 # Installing Tmux / Tmuxinator
 #
 
-{% set dependencies = [
-  "python-software-properties",
-  "ruby1.9.3"] %}
+# Tmux
 
-{% for pkg in dependencies %}
-.{{ pkg }}:
+.python-software-properties:
   pkg:
     - installed
-{% endfor %}
 
-# TMUX PPA for Tmux 1.8
 .tmux_ppa:
   pkgrepo:
     - managed
@@ -26,8 +21,27 @@
   pkg:
     - installed
 
+# Tmuxinator - Requires ruby >= 1.9.3
+
+.rbenv-deps:
+  pkg:
+    - installed
+    - names:
+      - bash
+      - git
+      - openssl
+      - gmake
+      - curl
+
+.ruby-1.9.3:
+  rvm:
+    - installed
+    - default: True
+    - require:
+      - pkg: .rbenv-deps
+
 .tmuxinator:
   gem:
     - installed
     - require:
-      - pkg: .ruby1.9.3
+      - rvm: .ruby-1.9.3

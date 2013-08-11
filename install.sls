@@ -19,6 +19,7 @@
 # TMUX PPA for Tmux 1.8
 .tmux_ppa:
   pkgrepo:
+    - managed
     - ppa: chris-reeves/tmux
     - require:
       - pkg: .python-software-properties

@@ -30,10 +30,9 @@
       - bash
       - git
       - openssl
-      - gmake
       - curl
 
-.ruby-1.9.3:
+.ruby-1.9.3-p448:
   rvm:
     - installed
     - default: True
@@ -44,4 +43,4 @@
   gem:
     - installed
     - require:
-      - rvm: .ruby-1.9.3
+      - rvm: .ruby-1.9.3-p448

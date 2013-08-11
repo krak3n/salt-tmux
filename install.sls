@@ -1,20 +1,34 @@
+#!stateconf yaml . jinja
+
 #
 # Installing Tmux / Tmuxinator
 #
 
-local_tmux_install:
+{% set dependencies = [
+  "python-software-properties",
+  "ruby1.9.1",
+  "ruby1.9.1-dev",
+  "rubygems1.9.1"] %}
+
+{% for pkg in dependencies %}
+.{{ pkg }}:
   pkg:
     - installed
-    - name: tmux
+{% endfor %}
 
-local_tmux_rubygems_install:
+# TMUX PPA for Tmux 1.8
+.tmux_ppa:
+  pkgrepo:
+    - ppa: chris-reeves/tmux
+    - require:
+      - pkg: .python-software-properties
+
+.tmux:
   pkg:
     - installed
-    - name: rubygems
 
-local_tmux_tmuxinator_install:
+.tmuxinator:
   gem:
     - installed
-    - name: tmuxinator
     - require:
-      - pkg: local_tmux_rubygems_install
+      - pkg: .rubygems1.9.1

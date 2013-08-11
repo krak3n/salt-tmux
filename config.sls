@@ -1,8 +1,10 @@
+#!stateconf yaml . jinja
+
 #
 # Tmux Config
 #
 
-local_tmux_conf:
+.tmux_config:
   file:
     - managed
     - name: /home/vagrant/.tmux.conf
@@ -12,7 +14,7 @@ local_tmux_conf:
     - source: salt://local_tmux/files/.tmux.conf
 
 # Tmux Zoom
-local_tmux_directory:
+.tmux_directory:
   file:
     - directory
     - name: /home/vagrant/.tmux
@@ -20,7 +22,7 @@ local_tmux_directory:
     - group: vagrant
     - mode: 755
 
-local_tmux_zoom:
+.tmux_zoom:
   file:
     - managed
     - name: /home/vagrant/.tmux/tmux-zoom.sh
@@ -29,11 +31,4 @@ local_tmux_zoom:
     - mode: 755
     - source: salt://local_tmux/files/tmux-zoom.sh
     - require:
-      - file.directory: /home/vagrant/.tmux
-
-local_tmux_tmuxinator_link:
-  file:
-    - symlink
-    - name: /home/vagrant/.tmuxinator
-    - target: /home/vagrant/facio/.tmuxinator
-    - makedirs: True
+      - file: .tmux_directory

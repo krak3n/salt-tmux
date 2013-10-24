@@ -13,6 +13,15 @@
     - mode: 755
     - source: salt://local_tmux/files/.tmux.conf
 
+.tmux_local_config:
+  file:
+    - managed
+    - name: /home/vagrant/.tmux.local.conf
+    - user: vagrant
+    - group: vagrant
+    - mode: 755
+    - source: salt://local_tmux/files/.tmux.local.conf
+
 # Tmux Zoom
 .tmux_directory:
   file:
